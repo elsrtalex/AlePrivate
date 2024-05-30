@@ -396,13 +396,13 @@ end)
 
 
 -- Definir el nivel de precisión (0.0 a 1.0)
-local parry_accuracy = 0.9 -- 90% de precisión
+local parry_accuracy = 1.0 -- 90% de precisión
 
 -- Definir el ping base (en milisegundos)
-local base_ping = 105 -- Puede ajustar este valor entre 90 y 120
+local base_ping = 60 -- Puede ajustar este valor entre 90 y 120
 
 -- Definir el tiempo de spam (en segundos)
-local spam_time = 2.0 -- Puede ajustar este valor entre 0.0 y 10.0
+local spam_time = 10.0 -- Puede ajustar este valor entre 0.0 y 10.0
 
 ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function()
     aura.hit_Count += 1
