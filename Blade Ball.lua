@@ -1,4 +1,4 @@
-local version = '0.0.2'
+local version = '0.0.3'
 
 print('Avantum llc')
 print(version)
@@ -551,6 +551,7 @@ task.spawn(function()
         end)
     end)
 end)
+
 
 
 
