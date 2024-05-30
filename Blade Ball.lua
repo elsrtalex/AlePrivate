@@ -396,21 +396,23 @@ end)
 
 
 -- Definir el nivel de precisión (0.0 a 1.0)
-local parry_accuracy = 1.0 -- 90% de precisión
+local parry_accuracy = 0.9 -- 90% de precisión
 
 -- Definir el ping base (en milisegundos)
-local base_ping = 60 -- Puede ajustar este valor entre 90 y 120
+local base_ping = 105 -- Puede ajustar este valor entre 90 y 120
 
 -- Definir el tiempo de spam (en segundos)
-local spam_time = 10.0 -- Puede ajustar este valor entre 0.0 y 10.0
+local spam_time = 2.0 -- Puede ajustar este valor entre 0.0 y 10.0
 
-ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function()
+-- Mejorar la función de incremento y decremento de hit_Count
+local function increment_hit_count()
     aura.hit_Count += 1
-
     task.delay(0.185, function()
         aura.hit_Count -= 1
     end)
-end)
+end
+
+ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(increment_hit_count)
 
 --//AutoParry - AutoSpam
 task.spawn(function()
@@ -419,19 +421,15 @@ task.spawn(function()
             return
         end
 
-        if closest_Entity then
-            if workspace.Alive:FindFirstChild(closest_Entity.Name) then
-                if aura.is_spamming then
-                    if local_player:DistanceFromCharacter(closest_Entity.HumanoidRootPart.Position) <= aura.spam_Range then   
-                        parry_remote:FireServer(
-                            0.5,
-                            CFrame.new(camera.CFrame.Position, Vector3.zero),
-                            {[closest_Entity.Name] = closest_Entity.HumanoidRootPart.Position},
-                            {closest_Entity.HumanoidRootPart.Position.X, closest_Entity.HumanoidRootPart.Position.Y},
-                            false
-                        )
-                    end
-                end
+        if closest_Entity and workspace.Alive:FindFirstChild(closest_Entity.Name) then
+            if aura.is_spamming and local_player:DistanceFromCharacter(closest_Entity.HumanoidRootPart.Position) <= aura.spam_Range then   
+                parry_remote:FireServer(
+                    0.5,
+                    CFrame.new(camera.CFrame.Position, Vector3.zero),
+                    {[closest_Entity.Name] = closest_Entity.HumanoidRootPart.Position},
+                    {closest_Entity.HumanoidRootPart.Position.X, closest_Entity.HumanoidRootPart.Position.Y},
+                    false
+                )
             end
         end
     end)
@@ -551,6 +549,8 @@ task.spawn(function()
         end)
     end)
 end)
+
+
 
 
 
