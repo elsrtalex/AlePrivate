@@ -1,4 +1,4 @@
-local version = '0.0.1'
+local version = '0.0.2'
 
 print('Avantum llc')
 print(version)
@@ -398,9 +398,6 @@ end)
 -- Definir el nivel de precisión (0.0 a 1.0)
 local parry_accuracy = 0.9 -- 90% de precisión
 
--- Definir el ping base (en milisegundos)
-local base_ping = 105 -- Puede ajustar este valor entre 90 y 120
-
 -- Definir el tiempo de spam (en segundos)
 local spam_time = 2.0 -- Puede ajustar este valor entre 0.0 y 10.0
 
@@ -414,9 +411,14 @@ end
 
 ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(increment_hit_count)
 
+-- Obtener el ping automáticamente
+local function get_ping()
+    return Stats.Network.ServerStatsItem['Data Ping']:GetValue() / 10
+end
+
 --//AutoParry - AutoSpam
 task.spawn(function()
-    RunService.PreRender:Connect(function()
+    RunService.Heartbeat:Connect(function()
         if not getgenv().aura_Enabled then
             return
         end
@@ -434,7 +436,7 @@ task.spawn(function()
         end
     end)
 
-    RunService.PreRender:Connect(function()
+    RunService.Heartbeat:Connect(function()
         if not getgenv().aura_Enabled then
             return
         end
@@ -447,7 +449,7 @@ task.spawn(function()
             aura.last_target = nil
         end)
 
-        local ping = base_ping / 10
+        local ping = get_ping()
         local self = Nurysium_Util.getBall()
 
         if not self then
@@ -543,13 +545,12 @@ task.spawn(function()
 
         task.spawn(function()
             repeat
-                RunService.PreRender:Wait()
+                RunService.Heartbeat:Wait()
             until (tick() - aura.hit_Time) >= 1
             aura.can_parry = true
         end)
     end)
 end)
-
 
 
 
