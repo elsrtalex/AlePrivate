@@ -1,4 +1,4 @@
-local version = '0.0.3'
+local version = '0.0.2'
 
 print('Avantum llc')
 print(version)
@@ -44,12 +44,12 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/elsrt
 task.wait(0.5)
 
 --// Yes, you can rename, I don't mind 🌠
-library:init("Avantum", game:GetService("UserInputService").TouchEnabled, game:GetService("CoreGui"))
+library:init("Avantum LLC", game:GetService("UserInputService").TouchEnabled, game:GetService("CoreGui"))
 
 library:create_section("Combat", 17440545793)
 library:create_section("World", 17440865331)
---// library:create_section("Misc", 17440868530)
---// library:create_section("Settings", 17440866925)
+library:create_section("Misc", 17440868530)
+--//library:create_section("Settings", 17440866925)
 
 function initializate(dataFolder_name: string)
 	local nurysium_Data = Instance.new('Folder', game:GetService('CoreGui'))
@@ -402,13 +402,13 @@ end)
 
 
 -- Definir el nivel de precisión (0.0 a 1.0)
-local parry_accuracy = 1 -- 90% de precisión
+local parry_accuracy = 1.0 -- 90% de precisión
 
 -- Definir el tiempo de spam (en segundos)
-local spam_time = 0.80 -- Puede ajustar este valor entre 0.0 y 10.0
+local spam_time = 0.50 -- Puede ajustar este valor entre 0.0 y 10.0
 
 -- Definir el tiempo mínimo entre parrys (en segundos)
-local hit_time = 0.75 -- Puede ajustar este valor entre 0.0 y 1.0
+local hit_time = 0.50 -- Puede ajustar este valor entre 0.0 y 1.0
 
 -- Mejorar la función de incremento y decremento de hit_Count
 local function increment_hit_count()
