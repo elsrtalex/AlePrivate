@@ -426,13 +426,13 @@ end)
 
 
 -- Definir el nivel de precisión (0.0 a 1.0)
-local parry_accuracy = 0.9 -- 90% de precisión
+local parry_accuracy = 1.2 -- 90% de precisión
 
 -- Definir el tiempo de spam (en segundos)
 local spam_time = 0.70 -- Puede ajustar este valor entre 0.0 y 10.0
 
 -- Definir el tiempo mínimo entre parrys (en segundos)
-local hit_time = 0.10 -- Puede ajustar este valor entre 0.0 y 1.0
+local hit_time = 0.55 -- Puede ajustar este valor entre 0.0 y 1.0
 
 -- Mejorar la función de incremento y decremento de hit_Count
 local function increment_hit_count()
