@@ -1,4 +1,4 @@
-local version = '0.0.1'
+local version = '0.0.3'
 
 print('Avantum llc')
 print(version)
@@ -110,11 +110,10 @@ function walk_to(position)
 	local_player.Character.Humanoid:MoveTo(position)
 end
 
-library:create_toggle("Auto Parry", "Combat", function(toggled)
+library:create_toggle("Auto Parry - Legit", "Combat", function(toggled)
 	resolve_parry_Remote()
 	getgenv().aura_Enabled = toggled
 end)
-
 library:create_toggle("AI", "Combat", function(toggled)
 	resolve_parry_Remote()
 	getgenv().ai_Enabled = toggled
@@ -152,7 +151,7 @@ library:create_toggle("Spectate Ball", "World", function(toggled)
 	getgenv().spectate_Enabled = toggled
 end)
 
-library:create_toggle("Auto Spam", "Combat", function(toggled)  -- Nuevo toggle para AutoSpam
+library:create_toggle("Auto Spam - BETA", "Combat", function(toggled)  -- Nuevo toggle para AutoSpam
 	resolve_parry_Remote()
 	getgenv().autoSpam_Enabled = toggled
 end)
@@ -403,10 +402,13 @@ end)
 
 
 -- Definir el nivel de precisión (0.0 a 1.0)
-local parry_accuracy = 0.9 -- 90% de precisión
+local parry_accuracy = 1 -- 90% de precisión
 
 -- Definir el tiempo de spam (en segundos)
-local spam_time = 2.0 -- Puede ajustar este valor entre 0.0 y 10.0
+local spam_time = 0.80 -- Puede ajustar este valor entre 0.0 y 10.0
+
+-- Definir el tiempo mínimo entre parrys (en segundos)
+local hit_time = 0.75 -- Puede ajustar este valor entre 0.0 y 1.0
 
 -- Mejorar la función de incremento y decremento de hit_Count
 local function increment_hit_count()
@@ -553,11 +555,12 @@ task.spawn(function()
         task.spawn(function()
             repeat
                 RunService.Heartbeat:Wait()
-            until (tick() - aura.hit_Time) >= 1
+            until (tick() - aura.hit_Time) >= hit_time
             aura.can_parry = true
         end)
     end)
 end)
+
 
 
 --// auto spam
