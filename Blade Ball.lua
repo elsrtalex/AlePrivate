@@ -1,4 +1,4 @@
-local version = '0.0.3'
+local version = '0.0.1'
 
 print('Avantum llc')
 print(version)
@@ -33,6 +33,7 @@ getgenv().shaders_effect_Enabled = false
 getgenv().ai_Enabled = false
 getgenv().spectate_Enabled = false
 
+getgenv().autoSpam_Enabled = false
 
 local Services = {
 	game:GetService('AdService'),
@@ -150,6 +151,12 @@ end)
 library:create_toggle("Spectate Ball", "World", function(toggled)
 	getgenv().spectate_Enabled = toggled
 end)
+
+library:create_toggle("Auto Spam", "Combat", function(toggled)  -- Nuevo toggle para AutoSpam
+	resolve_parry_Remote()
+	getgenv().autoSpam_Enabled = toggled
+end)
+
 
 --// kill effect
 function play_kill_effect(Part)
@@ -553,7 +560,18 @@ task.spawn(function()
 end)
 
 
-
+--// auto spam
+task.defer(function()
+	if getgenv().autoSpam_Enabled then
+		local autoSpam = function()
+			while getgenv().autoSpam_Enabled do
+				task.wait(0.1)
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/AdenoxScripterm/AutoDetectV3Spam/main/V3SPAM"))()
+			end
+		end
+		task.spawn(autoSpam)
+	end
+end)
 
 
 
