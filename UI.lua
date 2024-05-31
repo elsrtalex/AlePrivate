@@ -99,13 +99,13 @@ function nurysium: close()
 end
 
 function nurysium: init(name: string, is_draggable: boolean, parent)
-	task.defer(function()
-		if name:lower() ~= 'Avantum' or 'Avantum' then
-		   --// love skids, but please be smarter, make forks
-		   task.wait(300)
-		   game:GetService('Players').LocalPlayer:Kick("New Update for Avantum BB")
-		end
-	end)
+	--//task.defer(function()
+	--//	if name:lower() ~= 'Avantum' or 'Avantum' then
+	--//	   --// love skids, but please be smarter, make forks
+	--//	   task.wait(300)
+	--//	   game:GetService('Players').LocalPlayer:Kick("New Update for Avantum BB")
+	--//	end
+	--//end)
 	
 	if parent:FindFirstChild(name) then
 		parent:FindFirstChild(name):Destroy()
