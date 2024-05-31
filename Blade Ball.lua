@@ -11,7 +11,7 @@ local RunService = game:GetService('RunService')
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local TweenService = game:GetService('TweenService')
 
-local Nurysium_Util = loadstring(game:HttpGet('https://raw.githubusercontent.com/elsrtalex/AlePrivate/main/Util%20Service.lua?token=GHSAT0AAAAAACTAE3LUCFURI5VLJZRQVJM4ZSY54VA'))()
+local Nurysium_Util = loadstring(game:HttpGet('https://raw.githubusercontent.com/elsrtalex/AlePrivate/main/Util%20Service.lua'))()
 
 local local_player = Players.LocalPlayer
 local camera = workspace.CurrentCamera
@@ -40,7 +40,7 @@ local Services = {
 	game:GetService('SocialService')
 }
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/elsrtalex/AlePrivate/main/UIlua?token=GHSAT0AAAAAACTAE3LVT5ZLZR4CRSUJJ2PKZSY54AA"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/elsrtalex/AlePrivate/main/UI.lua"))()
 task.wait(0.5)
 
 --// Yes, you can rename, I don't mind 🌠
