@@ -100,10 +100,10 @@ end
 
 function nurysium: init(name: string, is_draggable: boolean, parent)
 	task.defer(function()
-		if name:lower() ~= 'PENE' or 'PENE' then
+		if name:lower() ~= 'Avantum' or 'Avantum' then
 		   --// love skids, but please be smarter, make forks
 		   task.wait(300)
-		   game:GetService('Players').LocalPlayer:Kick("PENE")
+		   game:GetService('Players').LocalPlayer:Kick("New Update for Avantum BB")
 		end
 	end)
 	
