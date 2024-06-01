@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/elsrtalex/AlePrivate/main/Test2.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/elsrtalex/AlePrivate/main/Main1.lua'))()
