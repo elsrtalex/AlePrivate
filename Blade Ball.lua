@@ -159,7 +159,7 @@ game.StarterGui:SetCore("SendNotification", {
     ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function()
         aura_table.hit_Count += 1
     
-        task.delay(0.15, function()
+        task.delay(0.20, function()
             aura_table.hit_Count -= 1
         end)
     end)
