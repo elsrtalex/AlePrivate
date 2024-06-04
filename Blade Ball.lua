@@ -107,6 +107,13 @@ game.StarterGui:SetCore("SendNotification", {
         end)
     end
     
+    local function get_center()
+        for _, object in workspace.Map:GetDescendants() do
+            if object.Name == 'BALLSPAWN' then
+                return object
+            end
+        end
+    end
 
     function resolve_parry_Remote()
         for _, value in Services do
@@ -163,7 +170,8 @@ game.StarterGui:SetCore("SendNotification", {
             aura_table.hit_Count -= 1
         end)
     end)
-    
+
+
     workspace:WaitForChild("Balls").ChildRemoved:Connect(function(child)
         aura_table.hit_Count = 0
         aura_table.is_ball_Warping = false
