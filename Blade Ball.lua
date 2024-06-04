@@ -166,7 +166,7 @@ game.StarterGui:SetCore("SendNotification", {
     ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function()
         aura_table.hit_Count += 1
     
-        task.delay(0.20, function()
+        task.delay(0.020, function()
             aura_table.hit_Count -= 1
         end)
     end)
@@ -345,7 +345,7 @@ end)
                         if local_player:DistanceFromCharacter(closest_Entity.HumanoidRootPart.Position) <= aura_table.spam_Range then   
     
                             parry_remote:FireServer(
-                                0,
+                                0.5,
                                 CFrame.new(camera.CFrame.Position, Vector3.zero),
                                 {[closest_Entity.Name] = closest_Entity.HumanoidRootPart.Position},
                                 {closest_Entity.HumanoidRootPart.Position.X, closest_Entity.HumanoidRootPart.Position.Y},
@@ -425,7 +425,7 @@ end)
     
             if ball_Distance <= aura_table.parry_Range and not aura_table.is_Spamming and not aura_table.is_ball_Warping then
                 parry_remote:FireServer(
-                    0,
+                    0.5,
                     CFrame.new(camera.CFrame.Position, Vector3.new(math.random(0, 100), math.random(0, 1000), math.random(100, 1000))),
                     {[closest_Entity.Name] = target_Position},
                     {target_Position.X, target_Position.Y},
@@ -436,7 +436,7 @@ end)
                 aura_table.hit_Time = tick()
                 aura_table.hit_Count += 1
     
-                task.delay(0.2, function()
+                task.delay(0.15, function()
                     aura_table.hit_Count -= 1
                 end)
             end
