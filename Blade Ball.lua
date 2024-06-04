@@ -345,7 +345,7 @@ end)
                         if local_player:DistanceFromCharacter(closest_Entity.HumanoidRootPart.Position) <= aura_table.spam_Range then   
     
                             parry_remote:FireServer(
-                                0.5,
+                                0,
                                 CFrame.new(camera.CFrame.Position, Vector3.zero),
                                 {[closest_Entity.Name] = closest_Entity.HumanoidRootPart.Position},
                                 {closest_Entity.HumanoidRootPart.Position.X, closest_Entity.HumanoidRootPart.Position.Y},
