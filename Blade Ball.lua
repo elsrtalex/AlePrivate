@@ -4,7 +4,7 @@ game.StarterGui:SetCore("SendNotification", {
     Duration = 5,
     })
 
-    print('Te amo jarean')
+    print('?')
     setfpscap(165)
     
     local Stats = game:GetService('Stats')
@@ -166,7 +166,7 @@ game.StarterGui:SetCore("SendNotification", {
     ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function()
         aura_table.hit_Count += 1
     
-        task.delay(0.20, function()
+        task.delay(0.005, function()
             aura_table.hit_Count -= 1
         end)
     end)
